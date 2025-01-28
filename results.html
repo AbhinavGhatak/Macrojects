@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Resume Rank Results</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #1c1c1c;
+            color: #fff;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+        }
+        .container {
+            background-color: #222;
+            padding: 40px;
+            border-radius: 8px;
+            width: 80%;
+            text-align: center;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
+        }
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            font-weight: 600;
+            color: #fff;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+        th, td {
+            padding: 15px;
+            text-align: center;
+            border: 1px solid #333;
+        }
+        th {
+            background-color: #333;
+            color: #fff;
+            font-size: 1.1rem;
+        }
+        td {
+            background-color: #2c2c2c;
+            color: #fff;
+            font-size: 1rem;
+        }
+        tr:nth-child(even) {
+            background-color: #333;
+        }
+        .back-btn {
+            display: block;
+            margin-top: 30px;
+            padding: 12px;
+            text-align: center;
+            background-color: transparent;
+            color: #28a745;
+            border: 2px solid #28a745;
+            font-size: 1.1rem;
+            text-decoration: none;
+            box-shadow: 0 0 10px rgba(40, 167, 69, 0.5), 0 0 20px rgba(40, 167, 69, 0.5), 0 0 30px rgba(40, 167, 69, 0.5);
+            transition: 0.3s;
+        }
+        .back-btn:hover {
+            color: #fff;
+            background-color: #28a745;
+            box-shadow: 0 0 10px rgba(40, 167, 69, 0.8), 0 0 20px rgba(40, 167, 69, 0.8), 0 0 30px rgba(40, 167, 69, 0.8);
+        }
+    </style>
+</head>
+<body>
+
+    <div class="container">
+        <h1>Resume Ranking Results</h1>
+        
+        {% if scores %}
+            <table>
+                <thead>
+                    <tr>
+                        <th>Resume Index</th>
+                        <th>Score (%)</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for score in scores %}
+                        <tr>
+                            <td>{{ score.resume_index }}</td>
+                            <td>{{ score.score }}</td>
+                        </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        {% else %}
+            <p>No results to display. Please try again later.</p>
+        {% endif %}
+
+        <a href="/" class="back-btn">Back to Upload</a>
+    </div>
+
+</body>
+</html>
